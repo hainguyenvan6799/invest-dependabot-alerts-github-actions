@@ -5,8 +5,8 @@ Plugin sample instruction:
 
 <h2>Requirement</h2>
 ```
-* Node.js
-* Git
+    * Node.js
+    * Git
 ```
 
 <h2>Private Key</h2>
