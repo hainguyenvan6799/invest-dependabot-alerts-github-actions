@@ -1,31 +1,124 @@
-# Laravel-page-view-counter-using-session
-#### Ứng dụng hieent thị sản phẩm: Sử dụng Session cho chức năng đếm số lượt view cho từng sản phẩm
-## Các bước khởi chạy
+Instruction use this template
+- Go to https://github.dev.cybozu.co.jp/kintone-plugins/development-template -> click Use this template -> create your own repository.
 
-#### Cài đặt composer
-``composer install``
+Plugin sample instruction: 
 
-#### Tạo file .env từ file .env mẫu
-``mv .env.example .env``
+<h2>Requirement</h2>
+```
+* Node.js
+* Git
+```
 
-#### Cấu hình biến môi trường trong file .env
-``DB_DATABASE=``
-``DB_USERNAME=``
-``DB_PASSWORD= ``
+<h2>Private Key</h2>
+```
+  npm run generate-plugin-private-key
+  Output:
+    key/private.key 
+```
 
-#### Tạo key cho ứng dụng
-``php artisan key:generate``
+<h2>Eslint</h2>
+``` npm run lint ```
 
-#### Chạy migration và seeding
-``php artisan migrate --seed``
+<h2>How to build</h2>
+```
+$ cd /tmp
+$ git clone https://github.dev.cybozu.co.jp/kintone-plugins/sample-plugin
+$ cd sample-plugin
+$ npm i
+$ npm run build
+```
 
-#### Chạy project laravel trên địa chỉ http://localhost:8000 với câu lệnh
-``php artisan serve``
+<h2>Output Files</h2>
+``` release/sample-plugin.zip ```
 
-#### 
+<h2>Supported Web & Mobile</h2>
+<ul>
+  <li>PC/Mobile: Chrome, Safari</li>
+</ul>
 
-# 
-Mã nguồn laravel-page-view-counter-using-session được sử dụng để thực hành tại [CodeGym](https://codegym.vn)
+<h2>Install Plug-in</h2>
+
+See the following document.
+<ul>
+  <li>https://help.cybozu.com/en/k/admin/plugin.html (EN)</li>
+  <li>https://help.cybozu.com/ja/k/admin/plugin.html (JA)</li>    
+</ul>
+
+<h2>Licence</h2>
+
+MIT License
+
+<h2>Copyright</h2>
+
+Copyright(c) Cybozu, Inc.
+
+- After cloned Github template repository for kintone plugin:
+I. You need to change the source's name in two places:
+1. In package.json
+``` 
+{
+  "name": "@kintone-plugins/{plugin_name}",
+  ...
+}
+```
+
+2. In license_finder/doc/dependency_decisions.yml (apply its own license)
+
+```
+...
+- - :approve
+  - "@kintone-plugins/{plugin_name}"
+  - :who: 
+    :why: In npm, a check of the License Finder will include the product itself.
+    :versions: []
+    :when: 2022-03-21 08:14:07.169344000 Z
+```
+II. Developers can change some plugin's informations:
+1. Name (EN, JA, ZH)
+  - In manifest.json:
+  ```
+    {
+      ...,
+      "name": { 
+        "en": "Sample Plug-in",
+        "ja": "Sample Plug-in",
+        "zh": "Sample Plug-in"
+      },
+      ...
+    }
+  ```
+2. Description about plugin (EN, JA, ZH)
+  - In manifest.json:
+  ```
+    {
+      ...
+      "description": { 
+        "en": "Sample plug-in description.",
+        "ja": "Sample plug-in description.",
+        "zh": "Sample plug-in description."
+      },
+      ...
+    }
+  ```
+3. Icon:
+  Save a new icon image to plugin/src/image and define the path in manifest.json:
+  ```
+    ...,
+    "icon": "src/image/icon.png",
+    ...
+  ```
+4. The name of plugin zip file
+  Go to webpack.config.js -> pluginZipPath -> enter another name ./release/{another_name}.zip
+  ```
+  plugins: [
+      ...,
+      new KintonePlugin({
+        manifestJSONPath: "./manifest.json",
+        privateKeyPath: "./key/private.ppk",
+        pluginZipPath: `./release/github_template_v${version}.zip`,
+      }),
+  ],
+  ```
 
 
-Nguyen Van Hai
+
